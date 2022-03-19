@@ -80,6 +80,7 @@
 
     // global model.
     var predictor;
+    var fen;
 
     tf.loadFrozenModel(frozen_graph, weights).then(
       function(result) {
@@ -111,6 +112,7 @@
         img.onload = function() {
           processLoadedImage(img);
           chessboard = runPrediction();
+          fen = chessboard.fen;
           console.log('Predicted FEN: ', chessboard.fen);
           updateUI(chessboard);
         }
